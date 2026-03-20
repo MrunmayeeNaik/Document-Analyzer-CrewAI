@@ -1,10 +1,10 @@
 ## Importing libraries and files
 import os
-import stat
-from dotenv import load_dotenv
-from pypdf import PdfReader
+
 from crewai.tools import BaseTool
 from crewai_tools import SerperDevTool
+from dotenv import load_dotenv
+from pypdf import PdfReader
 
 load_dotenv()
 
@@ -16,9 +16,7 @@ class FinancialDocumentTool(BaseTool):
     """CrewAI tool for reading and cleaning financial PDF documents."""
 
     name: str = "financial_document_reader"
-    description: str = (
-        "Read and clean the text content of a financial PDF document given its file path."
-    )
+    description: str = "Read and clean the text content of a financial PDF document given its file path."
 
     def _run(self, file_path: str) -> str:
         if not os.path.exists(file_path):
@@ -53,5 +51,6 @@ class FinancialDocumentTool(BaseTool):
             return truncated + notice
 
         return full_report
+
 
 financial_document_tool = FinancialDocumentTool()

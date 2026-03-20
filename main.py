@@ -1,9 +1,11 @@
-from fastapi import FastAPI, File, UploadFile, Form, HTTPException
 import os
 import uuid
-from database import SessionLocal, Analysis
+
 from crewai import Crew, Process
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+
 from agents import financial_analyst
+from database import Analysis, SessionLocal
 from task import analyze_financial_document as analyze_financial_task
 
 app = FastAPI(title="Financial Document Analyzer")
@@ -52,9 +54,9 @@ def analyze_endpoints(
         # Save to database
         db = SessionLocal()
         new_record = Analysis(
-        file_name=file.filename,
-        query=query.strip(),
-        analysis=analysis,
+            file_name=file.filename,
+            query=query.strip(),
+            analysis=analysis,
         )
         db.add(new_record)
         db.commit()
@@ -70,7 +72,7 @@ def analyze_endpoints(
     except Exception as e:
         raise HTTPException(
             status_code=500,
-            detail=f"Error processing financial document: {str(e)}",
+            detail=f"Error processing financial document: {e!s}",
         )
     finally:
         if os.path.exists(file_path):

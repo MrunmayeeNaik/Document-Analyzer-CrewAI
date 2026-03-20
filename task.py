@@ -1,8 +1,8 @@
 ## Importing libraries and files
 from crewai import Task
 
-from agents import financial_analyst, verifier, investment_advisor, risk_assessor
-from tools import search_tool, financial_document_tool
+from agents import financial_analyst, investment_advisor, risk_assessor, verifier
+from tools import financial_document_tool, search_tool
 
 ## Creating a task to help solve user's query
 analyze_financial_document = Task(
@@ -75,7 +75,7 @@ risk_assessment = Task(
     async_execution=False,
 )
 
-    
+
 verification = Task(
     description=(
         "Determine whether the provided document is a financial or investment-related document.\n"

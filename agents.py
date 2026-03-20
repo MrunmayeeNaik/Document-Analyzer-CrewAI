@@ -1,13 +1,11 @@
 ## Importing libraries and files
-import os
 from dotenv import load_dotenv
 
-import tools
 load_dotenv()
 
 from crewai import LLM, Agent
 
-from tools import search_tool, financial_document_tool
+from tools import financial_document_tool, search_tool
 
 ### Loading LLM
 llm = LLM(
@@ -17,7 +15,7 @@ llm = LLM(
 
 # Creating an Experienced Financial Analyst agent
 financial_analyst = Agent(
-    role= "Senior Financial Analyst",
+    role="Senior Financial Analyst",
     goal=(
         "Provide objective, evidence-based financial analysis strictly "
         "based on the uploaded document and reliable supporting context."
@@ -33,7 +31,7 @@ financial_analyst = Agent(
     llm=llm,
     max_iter=3,
     max_rpm=10,
-    allow_delegation=True  # Allow delegation to other specialists
+    allow_delegation=True,  # Allow delegation to other specialists
 )
 
 # Creating a document verifier agent
@@ -55,7 +53,7 @@ verifier = Agent(
     llm=llm,
     max_iter=1,
     max_rpm=1,
-    allow_delegation=True
+    allow_delegation=True,
 )
 
 
@@ -74,7 +72,7 @@ investment_advisor = Agent(
     llm=llm,
     max_iter=1,
     max_rpm=1,
-    allow_delegation=False
+    allow_delegation=False,
 )
 
 
@@ -93,5 +91,5 @@ risk_assessor = Agent(
     llm=llm,
     max_iter=1,
     max_rpm=1,
-    allow_delegation=False
+    allow_delegation=False,
 )

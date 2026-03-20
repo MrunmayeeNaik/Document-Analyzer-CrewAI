@@ -4,3 +4,4 @@ __pycache__/
 analysis.db
 data/
 *.pyc
+pyproject.toml
