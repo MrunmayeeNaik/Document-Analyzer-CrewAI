@@ -1,6 +1,39 @@
-## Financial Document Analyzer
 
-AI‑powered backend for analyzing financial PDF documents (corporate reports, statements, investor decks) and returning structured investment insights over a simple FastAPI API.
+# Financial Document Analyzer — Multi-Agent AI Pipeline
+
+Upload any financial PDF (annual report, investor deck, earnings statement) 
+and get structured investment insights returned via a REST API.
+
+Built with CrewAI multi-agent orchestration — a financial analyst agent 
+reads the document, reasons over it, and optionally searches the web 
+for market context before producing a structured report.
+
+---
+
+## Tech stack
+
+| Layer | Tool |
+|---|---|
+| Agent orchestration | CrewAI |
+| LLM backend | OpenAI-compatible (Groq) |
+| PDF extraction | Custom tool (PyMuPDF) |
+| Web search | Serper API |
+| API layer | FastAPI |
+| Storage | SQLite via SQLAlchemy |
+| Testing | Postman |
+
+---
+
+## What it produces
+
+For any uploaded financial PDF, the system returns:
+1. Document summary
+2. Key financial metrics and trends
+3. Analysis relevant to your specific query
+4. Risks and uncertainties
+5. High-level recommendations (with disclaimer)
+
+Previous analyses are stored and retrievable via `GET /history`.
 
 ---
 
