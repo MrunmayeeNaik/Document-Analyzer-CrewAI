@@ -218,5 +218,3 @@ The API will be available at `http://localhost:8000`.
 - **Database (`database.py`)**
   - SQLite via SQLAlchemy.
   - `Analysis` model stores file name, query, analysis text, and creation timestamp.
-
-This README reflects the current, debugged behavior of the project and should be a solid reference for setup, usage, and further extension.
